@@ -7,14 +7,18 @@ import { slateEditor } from '@payloadcms/richtext-slate' // editor-import
 import { buildConfig } from 'payload/config'
 
 import Users from './collections/Users'
+import Trainings from './collections/Trainings'
+import Registrations from './collections/Registrations'
+import Media from './collections/Media'
+import { viteBundler } from '@payloadcms/bundler-vite'
 
 export default buildConfig({
   admin: {
     user: Users.slug,
-    bundler: webpackBundler(), // bundler-config
+    bundler: viteBundler(), // bundler-config
   },
   editor: slateEditor({}), // editor-config
-  collections: [Users],
+  collections: [Users, Trainings, Registrations, Media],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
